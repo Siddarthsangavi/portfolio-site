@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import { useTheme } from './context/ThemeContext';
-import { FiChevronDown, FiMapPin, FiCode, FiBook, FiStar, FiHome, FiBookOpen, FiCoffee, FiClock } from 'react-icons/fi';
+import { FiChevronDown, FiMapPin, FiCode, FiBook, FiStar, FiHome, FiBookOpen, FiCoffee, FiClock, FiBriefcase, FiCalendar, FiArrowRight, FiPlay } from 'react-icons/fi';
 
 export default function Home() {
   const { theme } = useTheme();
@@ -292,6 +292,113 @@ export default function Home() {
                     isDarkMode ? 'text-gray-400' : 'text-gray-600'
                   }`}>
                     Days
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Career Path Visualization */}
+            <div className="mt-32 max-w-4xl mx-auto">
+              <div className="flex items-center justify-center mb-12">
+                <FiBriefcase className={`w-8 h-8 mr-3 ${
+                  isDarkMode ? 'text-white' : 'text-black'
+                }`} />
+                <h2 className={`text-3xl md:text-4xl font-bold font-['Fira_Code'] ${
+                  isDarkMode ? 'text-white' : 'text-black'
+                }`}>
+                  Career Milestones
+                </h2>
+              </div>
+              
+              <div className="relative py-8">
+                {/* Vertical timeline line */}
+                <div className={`absolute left-8 top-0 h-full w-0.5 github-timeline ${
+                  isDarkMode ? 'bg-gradient-to-b from-indigo-500/20 via-green-500/40 to-green-500/20' : 'bg-gradient-to-b from-indigo-600/20 via-green-600/40 to-green-600/20'
+                }`}></div>
+                
+                {/* First experience - Intern */}
+                <div className="relative pl-20 mb-16">
+                  {/* Dot */}
+                  <div className={`absolute left-8 top-0 w-4 h-4 rounded-full transform -translate-x-1/2 z-10 git-commit-dot ${
+                    isDarkMode ? 'bg-indigo-500 border-2 border-black' : 'bg-indigo-600 border-2 border-white'
+                  }`}></div>
+                  
+                  {/* Content */}
+                  <div className={`relative p-6 rounded-lg transform transition-all duration-500 hover:-translate-y-1 ${
+                    isDarkMode 
+                      ? 'bg-white/5 border border-white/10 shadow-lg shadow-indigo-500/20' 
+                      : 'bg-white border border-indigo-100 shadow-lg shadow-indigo-200/30'
+                  }`}>
+                    <div className={`flex flex-col md:flex-row justify-between md:items-center mb-4 ${
+                      isDarkMode ? 'text-white' : 'text-black'
+                    }`}>
+                      <h3 className={`text-xl font-bold font-['Fira_Code'] ${
+                        isDarkMode ? 'text-white' : 'text-black'
+                      }`}>
+                        Fullstack Engineer Intern
+                      </h3>
+                      <div className={`inline-flex items-center text-sm ${
+                        isDarkMode ? 'text-gray-400' : 'text-gray-500'
+                      }`}>
+                        <FiCalendar className="mr-2" />
+                        <span className="font-mono">Aug 22, 2023 - May 22, 2024</span>
+                      </div>
+                    </div>
+                    
+                    <div className={`mb-4 text-lg font-medium ${
+                      isDarkMode ? 'text-indigo-300' : 'text-indigo-600'
+                    }`}>
+                      Ford Pro Powered by Electriphi
+                    </div>
+                    
+                    <p className={`text-base ${
+                      isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                    }`}>
+                      Started my professional journey developing innovative solutions for the electric vehicle charging ecosystem. Worked on both frontend and backend technologies to create seamless user experiences.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Second experience - Full time */}
+                <div className="relative pl-20">
+                  {/* Dot */}
+                  <div className={`absolute left-8 top-0 w-4 h-4 rounded-full transform -translate-x-1/2 z-10 git-commit-dot ${
+                    isDarkMode ? 'bg-green-500 border-2 border-black' : 'bg-green-600 border-2 border-white'
+                  }`}></div>
+                  
+                  {/* Content */}
+                  <div className={`relative p-6 rounded-lg transform transition-all duration-500 hover:-translate-y-1 ${
+                    isDarkMode 
+                      ? 'bg-white/5 border border-white/10 shadow-lg shadow-green-500/20' 
+                      : 'bg-white border border-green-100 shadow-lg shadow-green-200/30'
+                  }`}>
+                    <div className={`flex flex-col md:flex-row justify-between md:items-center mb-4 ${
+                      isDarkMode ? 'text-white' : 'text-black'
+                    }`}>
+                      <h3 className={`text-xl font-bold font-['Fira_Code'] ${
+                        isDarkMode ? 'text-white' : 'text-black'
+                      }`}>
+                        Fullstack Engineer
+                      </h3>
+                      <div className={`inline-flex items-center text-sm ${
+                        isDarkMode ? 'text-gray-400' : 'text-gray-500'
+                      }`}>
+                        <FiCalendar className="mr-2" />
+                        <span className="font-mono">June 6, 2024 - Present</span>
+                      </div>
+                    </div>
+                    
+                    <div className={`mb-4 text-lg font-medium ${
+                      isDarkMode ? 'text-green-300' : 'text-green-600'
+                    }`}>
+                      Ford Motor Company
+                    </div>
+                    
+                    <p className={`text-base ${
+                      isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                    }`}>
+                      Transitioned to a full-time role where I'm building scalable applications and services. Leveraging modern technologies to drive innovation in automotive software solutions.
+                    </p>
                   </div>
                 </div>
               </div>
