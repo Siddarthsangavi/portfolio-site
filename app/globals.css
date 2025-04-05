@@ -1,8 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary-glow: rgba(120, 120, 255, 0.35);
+  --secondary-glow: rgba(155, 120, 255, 0.2);
+}
+
+/* Light theme variables */
+html[data-theme='light'] {
+  --background: #f5f5f7;
+  --foreground: #121212;
+  --primary-glow: rgba(80, 80, 220, 0.2);
+  --secondary-glow: rgba(125, 90, 220, 0.15);
+}
+
+/* Dark theme variables */
+html[data-theme='dark'] {
+  --background: #000000;
+  --foreground: #ffffff;
+  --primary-glow: rgba(120, 120, 255, 0.35);
+  --secondary-glow: rgba(155, 120, 255, 0.2);
 }
 
 @theme inline {
@@ -12,15 +30,124 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Glowy effects */
+.glow-effect {
+  box-shadow: 0 0 10px 2px var(--primary-glow), 
+              0 0 15px 5px var(--secondary-glow);
+}
+
+.glow-icon {
+  filter: drop-shadow(0 0 2px var(--primary-glow))
+          drop-shadow(0 0 4px var(--secondary-glow));
+}
+
+.glow-text {
+  text-shadow: 0 0 8px var(--primary-glow), 
+              0 0 12px var(--secondary-glow);
+}
+
+.hero-text {
+  text-shadow: 0 0 15px var(--primary-glow), 
+              0 0 25px var(--secondary-glow);
+}
+
+/* Enhanced glow for scroll icon */
+.scroll-icon-glow {
+  filter: drop-shadow(0 0 5px var(--primary-glow))
+          drop-shadow(0 0 10px var(--secondary-glow));
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 5px var(--primary-glow))
+            drop-shadow(0 0 10px var(--secondary-glow));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px var(--primary-glow))
+            drop-shadow(0 0 15px var(--secondary-glow));
+  }
+}
+
+/* For the navbar links hover effect */
+@keyframes glow-pulse {
+  0% {
+    opacity: 0.8;
+    box-shadow: 0 0 5px 1px var(--primary-glow);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 10px 3px var(--primary-glow), 
+                0 0 15px 5px var(--secondary-glow);
+  }
+  100% {
+    opacity: 0.8;
+    box-shadow: 0 0 5px 1px var(--primary-glow);
+  }
+}
+
+/* Apply the glow animation to active elements */
+.glow-active {
+  animation: glow-pulse 2s infinite ease-in-out;
+}
+
+/* Background effects for the home page */
+.bg-gradient-dark {
+  background: radial-gradient(circle at 50% 30%, rgba(45, 55, 72, 0.3) 0%, rgba(17, 24, 39, 0) 70%),
+              radial-gradient(circle at 80% 80%, rgba(76, 29, 149, 0.1) 0%, rgba(17, 24, 39, 0) 70%);
+}
+
+.bg-gradient-light {
+  background: radial-gradient(circle at 50% 30%, rgba(224, 231, 255, 0.6) 0%, rgba(249, 250, 251, 0) 70%),
+              radial-gradient(circle at 80% 80%, rgba(219, 234, 254, 0.4) 0%, rgba(249, 250, 251, 0) 70%);
+}
+
+/* Animated background glow */
+.bg-glow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  filter: blur(80px);
+  opacity: 0.4;
+  border-radius: 100%;
+  z-index: -1;
+  animation: float 8s ease-in-out infinite;
+}
+
+.bg-glow-1 {
+  top: 20%;
+  left: 15%;
+  background: var(--primary-glow);
+  animation-delay: 0s;
+}
+
+.bg-glow-2 {
+  top: 60%;
+  right: 15%;
+  background: var(--secondary-glow);
+  animation-delay: -4s;
+  width: 200px;
+  height: 200px;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
 }
