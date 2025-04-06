@@ -279,10 +279,10 @@ export default function Home() {
             </a>
           </div>
           
-          <div className={`mt-2 flex items-center space-x-4 transform transition-all duration-1000 delay-300 ${
+          <div className={`mt-24 flex flex-col items-center w-full transform transition-all duration-1000 delay-300 ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}>
-            <p className={`text-xl font-medium ${
+            <p className={`text-xl font-medium mb-6 text-center ${
               isDarkMode ? 'text-gray-300' : 'text-gray-700'
             }`}>
               Scroll down to know about me and my journey
@@ -293,7 +293,7 @@ export default function Home() {
               className="animate-bounce focus:outline-none"
               aria-label="Scroll to about section"
             >
-              <FiChevronDown className={`w-8 h-8 ${
+              <FiChevronDown className={`w-10 h-10 ${
                 isDarkMode ? 'text-white scroll-icon-glow' : 'text-black'
               }`} />
             </button>
@@ -663,7 +663,7 @@ export default function Home() {
                     <div className="grid grid-cols-4 md:grid-cols-8 gap-6">
                       {[
                         { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-                        { name: 'NestJS', logo: 'https://docs.nestjs.com/assets/logo-small.svg', invertInDark: false },
+                        { name: 'NestJS', logo: 'https://raw.githubusercontent.com/nestjs/docs.nestjs.com/master/src/assets/logo-small.svg', invertInDark: false },
                         { name: 'Flask', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg', invertInDark: true },
                         { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
                       ].map((tech, index) => (
