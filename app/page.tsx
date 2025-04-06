@@ -14,6 +14,7 @@ export default function Home() {
   const [toolsVisible, setToolsVisible] = useState(false);
   const [experience, setExperience] = useState({ years: 0, months: 0, days: 0 });
   const [showCopied, setShowCopied] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const aboutRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
   const toolsRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,8 @@ export default function Home() {
     }, 300);
     
     const handleScroll = () => {
+      setScrollY(window.scrollY);
+      
       if (aboutRef.current) {
         const position = aboutRef.current.getBoundingClientRect();
         if (position.top < window.innerHeight - 200) {
@@ -119,26 +122,59 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center pt-16">
         <div className="container mx-auto px-6 flex flex-col items-start max-w-5xl relative z-10">
-          <div className={`transform transition-all duration-1000 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+          <div 
+            className={`transform transition-all duration-300 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+            style={{
+              opacity: Math.max(0, 1 - scrollY / 350),
+              transform: `
+                translateY(${Math.min(scrollY / 15, -30)}px) 
+                translateX(${Math.min(scrollY / 8, window.innerWidth > 768 ? 250 : 120)}px) 
+                scale(${Math.max(0.6, 1 - scrollY / 500)})
+              `,
+              transformOrigin: 'left center',
+            }}
+          >
             <h1 className={`font-bold tracking-tight mb-1 font-['Fira_Code'] ${
               isDarkMode ? 'text-white hero-text' : 'text-black'
             }`}>
-              <span className="text-3xl md:text-4xl block mb-2">Hello world,</span>
+              <span 
+                className="text-3xl md:text-4xl block mb-2"
+                style={{
+                  opacity: Math.max(0, 1 - scrollY / 150),
+                }}
+              >Hello world,</span>
               <span className="text-5xl md:text-7xl">I'm Siddharth Sangavi,</span>
             </h1>
             <p className={`text-2xl md:text-3xl mb-6 font-['Fira_Code'] ${
               isDarkMode ? 'text-gray-300' : 'text-gray-600'
-            }`}>
+            }`}
+             style={{
+               opacity: Math.max(0, 1 - scrollY / 150),
+               transform: `translateY(${Math.min(scrollY / 10, 50)}px)`,
+             }}
+            >
               a Fullstack Engineer
             </p>
             <div className={`h-1 w-32 mb-8 ${
               isDarkMode ? 'bg-white/30' : 'bg-black/20'
-            }`}></div>
+            }`}
+             style={{
+                opacity: Math.max(0, 1 - scrollY / 120),
+                width: Math.max(32, 32 - scrollY / 5),
+                transform: `translateY(${Math.min(scrollY / 10, 30)}px)`,
+             }}
+            ></div>
           </div>
           
-          <div className={`mb-6 flex items-center transform transition-all duration-1000 delay-200 ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-          }`}>
+          <div 
+            className={`mb-6 flex items-center transform transition-all duration-1000 delay-200 ${
+              visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+            style={{
+              opacity: Math.max(0, 1 - scrollY / 120),
+              transform: `translateY(${Math.min(scrollY / 6, 80)}px)`,
+            }}
+          >
             <div className={`font-mono text-sm md:text-base px-4 py-2 rounded-md ${
               isDarkMode ? 'bg-white/5 text-green-400' : 'bg-black/5 text-green-600'
             }`}>
@@ -155,9 +191,15 @@ export default function Home() {
           </div>
           
           {/* Social Links and Resume Download */}
-          <div className={`mb-8 flex flex-col sm:flex-row items-start sm:items-center transform transition-all duration-1000 delay-300 ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-          }`}>
+          <div 
+            className={`mb-8 flex flex-col sm:flex-row items-start sm:items-center transform transition-all duration-1000 delay-300 ${
+              visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+            style={{
+              opacity: Math.max(0, 1 - scrollY / 120),
+              transform: `translateY(${Math.min(scrollY / 5, 100)}px)`,
+            }}
+          >
             <div className="flex items-center space-x-4 mb-4 sm:mb-0 sm:mr-6">
               <a 
                 href="https://github.com/Siddarthsangavi" 
@@ -279,9 +321,15 @@ export default function Home() {
             </a>
           </div>
           
-          <div className={`mt-24 flex flex-col items-center w-full transform transition-all duration-1000 delay-300 ${
-            visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-          }`}>
+          <div 
+            className={`mt-24 flex flex-col items-center w-full transform transition-all duration-1000 delay-300 ${
+              visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+            style={{
+              opacity: Math.max(0, 1 - scrollY / 100),
+              transform: `translateY(${Math.min(scrollY / 4, 120)}px)`,
+            }}
+          >
             <p className={`text-xl font-medium mb-6 text-center ${
               isDarkMode ? 'text-gray-300' : 'text-gray-700'
             }`}>
