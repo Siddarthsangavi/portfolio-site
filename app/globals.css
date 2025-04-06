@@ -103,6 +103,42 @@ body {
   animation: glow-pulse 2s infinite ease-in-out;
 }
 
+/* Social icons glow effect */
+.social-icon-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.social-icon-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px 2px var(--primary-glow),
+              0 0 15px 4px var(--secondary-glow);
+}
+
+.social-icon-glow svg {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 1px var(--primary-glow));
+}
+
+.social-icon-glow:hover svg {
+  filter: drop-shadow(0 0 3px var(--primary-glow))
+          drop-shadow(0 0 5px var(--secondary-glow));
+}
+
+/* Resume button glow effect */
+.resume-btn-glow {
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px 1px rgba(99, 102, 241, 0.3);
+}
+
+.resume-btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px 2px rgba(99, 102, 241, 0.5),
+              0 0 12px 4px rgba(79, 70, 229, 0.2);
+  background-color: transparent;
+}
+
 /* Background effects for the home page */
 .bg-gradient-dark {
   background: radial-gradient(circle at 50% 30%, rgba(45, 55, 72, 0.3) 0%, rgba(17, 24, 39, 0) 70%),
@@ -284,8 +320,8 @@ body {
   background: linear-gradient(to bottom,
     rgba(99, 102, 241, 0) 0%,
     rgba(99, 102, 241, 0.7) 15%,
-    rgba(34, 197, 94, 0.7) 85%,
-    rgba(34, 197, 94, 0) 100%
+    rgba(129, 140, 248, 0.7) 85%,
+    rgba(99, 102, 241, 0) 100%
   );
   opacity: 0.4;
 }
@@ -342,4 +378,202 @@ body {
     transform: translate(-50%, -50%) scale(3);
     opacity: 0.2;
   }
+}
+
+/* Company logo container styles */
+.company-logo-container {
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  transition: all 0.3s ease;
+  background: transparent;
+  backdrop-filter: blur(5px);
+}
+
+.company-logo-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, 
+    rgba(99, 102, 241, 0.6), 
+    rgba(129, 140, 248, 0.6), 
+    rgba(99, 102, 241, 0.6)
+  );
+  z-index: -1;
+  animation: rotate-border 6s linear infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.company-logo-container:hover::before {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Additional hover glow effect */
+.company-logo-container::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 0.4s ease, box-shadow 0.4s ease;
+}
+
+.company-logo-container:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes rotate-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Enhanced logo styles to handle white backgrounds */
+html[data-theme='dark'] .company-logo-container {
+  background: transparent;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme='light'] .company-logo-container {
+  background: transparent;
+}
+
+/* Logo inner container styles */
+.logo-inner-container {
+  background: white !important;
+  isolation: isolate;
+  position: relative;
+  border-radius: 50%;
+}
+
+.logo-inner-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: white;
+  z-index: -1;
+}
+
+/* Career flow animation styles */
+@keyframes flow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.05);
+  }
+}
+
+/* Vertical connection line animation */
+@keyframes arrow-pulse {
+  0%, 100% {
+    transform: translateY(-5px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Enhanced logo animations */
+.company-logo-container {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.company-logo-container:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  z-index: 30;
+}
+
+.company-logo-container img {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  filter: brightness(1) contrast(1);
+}
+
+.company-logo-container:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.logo-inner-container {
+  transition: all 0.4s ease;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.company-logo-container:hover .logo-inner-container {
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.02);
+  background: white !important;
+}
+
+/* Removed dark mode specific logo styles as they're no longer needed */
+
+/* Career flow animation styles */
+@keyframes flow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.05);
+  }
+}
+
+/* Tech Logos Styling */
+.tech-logo {
+  transition: all 0.3s ease;
+  filter: grayscale(20%);
+  border-radius: 0;
+  padding: 0;
+}
+
+.tech-logo:hover {
+  filter: grayscale(0%) brightness(1.1);
+  transform: scale(1.15);
+}
+
+html[data-theme='dark'] .tech-logo {
+  /* Combined filters with proper syntax */
+  filter: grayscale(20%) brightness(0.9) drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+  background-color: transparent;
+  box-shadow: none;
+}
+
+html[data-theme='dark'] .tech-logo:hover {
+  filter: grayscale(0%) brightness(1.2) drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
+  transform: scale(1.15);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Special handling for logos that need inversion in dark mode */
+html[data-theme='dark'] .tech-logo.filter-invert {
+  filter: invert(1) grayscale(20%) brightness(1.5);
+  background-color: transparent;
+}
+
+html[data-theme='dark'] .tech-logo.filter-invert:hover {
+  filter: invert(1) grayscale(0%) brightness(1.8) drop-shadow(0 0 3px rgba(255, 255, 255, 0.4));
+  background-color: transparent;
 }
