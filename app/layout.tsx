@@ -4,6 +4,7 @@ import "./globals.css";
 import '@fontsource/poppins';
 import '@fontsource/fira-code';
 import { ThemeProvider } from "./context/ThemeContext";
+import CustomScrollIndicatorWrapper from "./components/CustomScrollIndicatorWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,6 @@ export const metadata: Metadata = {
   description: "My personal portfolio website",
 };
 
-// Ensure proper client component usage
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,6 +30,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider>
+          <CustomScrollIndicatorWrapper />
           {children}
         </ThemeProvider>
       </body>

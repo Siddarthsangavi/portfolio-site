@@ -54,7 +54,8 @@ export default function Navbar() {
           <div className="flex items-center space-x-2 font-['Fira_Code']">
             <span className="px-4 py-2 text-gray-400">Frontend</span>
             <span className="px-4 py-2 text-gray-400">Backend</span>
-            <span className="px-4 py-2 text-gray-400">Others</span>
+            <span className="px-4 py-2 text-gray-400">Crafted Solutions</span>
+            <span className="px-4 py-2 text-gray-400">Blogs</span>
           </div>
         </div>
       </nav>
@@ -91,9 +92,15 @@ export default function Navbar() {
               isDarkMode={isDarkMode}
             />
             <NavLink 
-              href="/others" 
-              label="Others" 
-              isActive={pathname === '/others'} 
+              href="/crafted-solutions" 
+              label="Crafted Solutions" 
+              isActive={pathname === '/crafted-solutions'} 
+              isDarkMode={isDarkMode}
+            />
+            <NavLink 
+              href="/blogs" 
+              label="Blogs" 
+              isActive={pathname === '/blogs'} 
               isDarkMode={isDarkMode}
             />
           </div>
